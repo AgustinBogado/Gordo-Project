@@ -15,3 +15,10 @@ Creado requirements.txt
 Guarda las bibliotecas instaladas con sus versiones con el comando: pip freeze > requirements.txt
 Para luego poder instalarlas cuando se ejecuta: pip install -r requirements.txt
 
+Creados carpeta src y 3 archivos: app - generator - processor (todos .py)
+Añadido logica basica para empezar
+
+La app se ejecuta con: python app.py
+Una prueba para processor se hace con: df = read_excel("data/lista_productos.xlsx")
+
+PD: en python se comenta con #
