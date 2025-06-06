@@ -1,8 +1,11 @@
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+import os
 
 def create_pdf(products, output_path):
     """Genera un PDF con la lista de productos y precios."""
+    # Ensure the directory for the output exists to avoid FileNotFoundError
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     c = canvas.Canvas(output_path, pagesize=letter)
     width, height = letter
     
@@ -26,6 +29,9 @@ def create_pdf(products, output_path):
     c.save()
 
 # Ejemplo de uso
-products = [{'Producto': 'Producto A', 'Precio': '100', 'Marca': 'Marca A'},
-            {'Producto': 'Producto B', 'Precio': '200', 'Marca': 'Marca B'}]
-create_pdf(products, "output/lista_productos.pdf")
+if __name__ == "__main__":
+    products = [
+        {'Producto': 'Producto A', 'Precio': '100', 'Marca': 'Marca A'},
+        {'Producto': 'Producto B', 'Precio': '200', 'Marca': 'Marca B'}
+    ]
+    create_pdf(products, "output/lista_productos.pdf")
