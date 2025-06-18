@@ -1,24 +1,39 @@
-import tkinter as tk
-from tkinter import filedialog
-from processor import read_excel, read_pdf
-from generator import create_pdf
+from tkinter import filedialog, messagebox, Tk, Button
+from processor import read_word_table, read_excel, diff_products, write_report
 
-def open_file():
-    file_path = filedialog.askopenfilename(filetypes=[("Excel files", "*.xlsx"), ("PDF files", "*.pdf")])
-    if file_path:
-        if file_path.endswith(".xlsx"):
-            data = read_excel(file_path)
-            print(data)
-            create_pdf(data.to_dict(orient='records'), "output/lista_productos.pdf")
-        elif file_path.endswith(".pdf"):
-            text = read_pdf(file_path)
-            print(text[:500])
 
-# Crear ventana
-root = tk.Tk()
-root.title("Lector de Listas")
+def run_report():
+    word_base = filedialog.askopenfilename(
+        title="Word base (.docx)", filetypes=[("Word", "*.docx")]
+    )
+    if not word_base:
+        return
 
-btn_open = tk.Button(root, text="Cargar Archivo", command=open_file)
-btn_open.pack(pady=20)
+    excel_nuevo = filedialog.askopenfilename(
+        title="Excel nuevos (.xlsx)", filetypes=[("Excel", "*.xlsx")]
+    )
+    if not excel_nuevo:
+        return
 
-root.mainloop()
+    base_df = read_word_table(word_base)
+    new_df = read_excel(excel_nuevo)
+    to_add, to_remove, to_update = diff_products(base_df, new_df)
+
+    salida = filedialog.asksaveasfilename(
+        title="Guardar informe (.txt)",
+        defaultextension=".txt",
+        filetypes=[("Text", "*.txt")],
+    )
+    if not salida:
+        return
+
+    write_report(to_add, to_remove, to_update, salida)
+    messagebox.showinfo("Listo", f"Informe generado en:\n{salida}")
+
+
+if __name__ == "__main__":
+    root = Tk()
+    root.title("Generar Informe de Cambios")
+    btn = Button(root, text="Crear informe .txt", command=run_report)
+    btn.pack(padx=20, pady=20)
+    root.mainloop()
