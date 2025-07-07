@@ -51,10 +51,10 @@ class App(tk.Tk):
 
     def open_file(self):
         tipos = [
+            ("Todos los archivos", "*.*"),
             ("Archivos Excel", "*.xlsx"),
             ("Archivos PDF",    "*.pdf"),
             ("Documentos Word","*.docx"),
-            ("Todos los archivos", "*.*"),
         ]
         ruta = filedialog.askopenfilename(filetypes=tipos)
         if not ruta:
