@@ -1,24 +1,19 @@
 # Gordo-Project
-A ver si puedo ayudar el gordo
+Welcome, the idea of this project it's to practice in Python and help my cousin in his work... if i can.
 
-La idea de este proyecto es que pueda hacer un programa que ayude al gordo (mi primo)
-a hacer mas facil y rapido su trabajo para poder tener más tiempo y descansar más su cabeza c;
+First have to create the **Virtual Enviroment**: python -m venv env
+To activate the Virtual Enviroment: source env/Scripts/activate
+To deactivate: deactivate
 
+Dependencies **required**: tkinter - requests - reportlab - pandas - pdfplumber
+Command to install dependencies: pip install -r requirements.txt
+To save the actual dependencies: pip freeze > requirements.txt
+To install the dependencies: pip install -r requirements.txt
 
-Primero se creo el entorno virtual "env" con: python -m venv env
-Se activo el entorno virtual con: source env/Scripts/activate; para desactivar es: deactivate
+Created the folders to use: app - generator - processor
 
-Instalando dependencias de: tkinter - requests - reportlab - pandas - pdfplumber
-Comando para instalar: pip install tkinter requests reportlab pandas pdfplumber
+To start the app: python src/app.py  #It's **python** + the path of the app.py
+To test processor: df = read_excel("data/lista_productos.xlsx")
 
-Creado requirements.txt
-Guarda las bibliotecas instaladas con sus versiones con el comando: pip freeze > requirements.txt
-Para luego poder instalarlas cuando se ejecuta: pip install -r requirements.txt
-
-Creados carpeta src y 3 archivos: app - generator - processor (todos .py)
-Añadido logica basica para empezar
-
-La app se ejecuta con: python app.py
-Una prueba para processor se hace con: df = read_excel("data/lista_productos.xlsx")
-
-PD: en python se comenta con #
+Created "launcher.py" to modifi freely the launcher of the app.
+Now app.py only have the call of the class "app"
