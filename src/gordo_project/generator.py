@@ -5,16 +5,18 @@ import os
 def create_pdf(products, output_path):
     """Genera un PDF con la lista de productos y precios."""
     # Ensure the directory for the output exists to avoid FileNotFoundError
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    dir_name = os.path.dirname(output_path)
+    if dir_name:
+        os.makedirs(dir_name, exist_ok=True)
     c = canvas.Canvas(output_path, pagesize=letter)
     width, height = letter
     
     y_position = height - 40  # Empezamos un poco abajo en la página
     
     for product in products:
-        name = product['Producto']
-        price = product['Precio']
-        brand = product['Marca']
+        name = product.get('Producto', '')
+        price = product.get('Precio', '')
+        brand = product.get('Marca', '')
         
         c.drawString(40, y_position, f"Producto: {name}")
         c.drawString(40, y_position - 20, f"Precio: ${price}")
