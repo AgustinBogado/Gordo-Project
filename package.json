@@ -1,0 +1,55 @@
+{
+  "name": "gordo-project-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "build": {
+    "appId": "com.gordo-project.listaslauncher",
+    "productName": "Listas Launcher",
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "processor.js",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/icon.ico"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build-renderer": "vite build",
+    "start": "electron .",
+    "dist": "npm run build-renderer && electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@vitejs/plugin-react": "^4.6.0",
+    "autoprefixer": "^10.4.21",
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12",
+    "lucide-react": "^0.525.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.0.4"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "electron-is-dev": "^3.0.1",
+    "exceljs": "^4.4.0",
+    "pdf-parse": "^1.1.1",
+    "pdfkit": "^0.13.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
