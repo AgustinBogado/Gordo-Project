@@ -1,10 +1,10 @@
-//Desarrollo
-npm run dev      # levanta el servidor Vite en localhost:5173
-npm run start    # abre la ventana Electron apuntando a http://localhost:5173
+//Develop
+npm run dev      # Run the server from Vite in localhost:5173
+npm run start    # Open the Electron window with host http://localhost:5173
 
 //Produccion
-npm run build-renderer   # genera dist/renderer/index.html + assets (bundle.js, css...)
-npm run start            # ahora carga desde dist/renderer/index.html
+npm run build-renderer   # Make dist/renderer/index.html + assets (bundle.js, css...)
+npm run start            # Now load from dist/renderer/index.html
 
-//Crear ejecutable
+//.exe
 npm run dist
